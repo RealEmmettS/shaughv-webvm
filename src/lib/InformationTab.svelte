@@ -8,4 +8,5 @@
 	<li>Local/private <a class="underline" target="_blank" href="https://cheerpx.io/docs/guides/File-System-support">file storage</a></li>
 	<li><a class="underline" target="_blank" href="https://cheerpx.io/docs/guides/Networking">Networking</a> via <a class="underline" target="_blank" href="https://tailscale.com/">Tailscale</a></li>
 </ul>
+<p class="mt-4 text-sm text-gray-400">This is a fork of <a class="underline" target="_blank" href="https://github.com/leaningtech/webvm">WebVM</a> by Leaning Technologies</p>
 <slot></slot>

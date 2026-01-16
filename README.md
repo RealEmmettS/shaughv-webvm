@@ -3,9 +3,11 @@
 [![Discord server](https://img.shields.io/discord/988743885121548329?color=%235865F2&logo=discord&logoColor=%23fff)](https://discord.gg/yWRr2YnD9c)
 [![Issues](https://img.shields.io/github/issues/leaningtech/webvm)](https://github.com/leaningtech/webvm/issues)
 
-This repository hosts the source code for [https://webvm.io](https://webvm.io), a Linux virtual machine that runs in your browser.
+This repository hosts the source code for [https://vm.emmetts.dev](https://vm.emmetts.dev), a Linux virtual machine that runs in your browser.
 
-Try out the new Alpine / Xorg / i3 graphical environment: [https://webvm.io/alpine.html](https://webvm.io/alpine.html)
+Try out the new Alpine / Xorg / i3 graphical environment: [https://vm.emmetts.dev/alpine.html](https://vm.emmetts.dev/alpine.html)
+
+> **Note:** A custom Alpine image for this fork is coming soon. For now, the Alpine link points to the upstream deployment.
 
 <img src="/assets/welcome_to_WebVM_alpine_2024.png" width="90%">
 
@@ -66,10 +68,10 @@ WebVM supports pre-configuration via URL fragment parameters. Multiple parameter
 | `tailUrl` | Custom Tailscale control server URL (for Headscale) | `#tailUrl=https://headscale.example.com` |
 
 **Example URLs:**
-- Claude AI only: `https://webvm.io/#claude=sk-ant-api03-xxxxx`
-- Tailscale only: `https://webvm.io/#tail=tskey-auth-xxxxx`
-- Both combined: `https://webvm.io/#claude=sk-ant-api03-xxxxx,tail=tskey-auth-xxxxx`
-- With custom control server: `https://webvm.io/#tail=tskey-xxxxx,tailUrl=https://headscale.example.com`
+- Claude AI only: `https://vm.emmetts.dev/#claude=sk-ant-api03-xxxxx`
+- Tailscale only: `https://vm.emmetts.dev/#tail=tskey-auth-xxxxx`
+- Both combined: `https://vm.emmetts.dev/#claude=sk-ant-api03-xxxxx,tail=tskey-auth-xxxxx`
+- With custom control server: `https://vm.emmetts.dev/#tail=tskey-xxxxx,tailUrl=https://headscale.example.com`
 
 > **Security Note:** API keys in URLs are visible in browser history and potentially server logs. URL parameters are intended for personal/private deployments where you control access.
 
@@ -77,7 +79,7 @@ WebVM supports pre-configuration via URL fragment parameters. Multiple parameter
 
 As an alternative to manually logging in, you can add your Tailscale auth key at the end of the WebVM URL using the `tail` parameter:
 
-`https://webvm.io/#tail=<your-key>`
+`https://vm.emmetts.dev/#tail=<your-key>`
 
 It is recommended to use an ephemeral key.
 
@@ -90,7 +92,7 @@ Though as headscale unfortunately doesn't support adding CORS headers. You will 
 Once ready, add the following line to your `location /` block in your nginx config file.
 
 ``` Nginx
- if ($http_origin = "https://webvm.io") {
+ if ($http_origin = "https://vm.emmetts.dev") {
             add_header 'Access-Control-Allow-Origin' "$http_origin";
 			add_header 'Access-Control-Allow-Credentials' 'true' always;
         }
@@ -99,11 +101,11 @@ Once ready, add the following line to your `location /` block in your nginx conf
 
 To log in to your headscale network add `tailUrl=<your-control-url>` to the WebVM URL fragment:
 
-`https://webvm.io/#tailUrl=<your-control-url>`
+`https://vm.emmetts.dev/#tailUrl=<your-control-url>`
 
 **Notes:**
 
-- If self hosting, replace "https://webvm.io" with your own url.
+- If self hosting, replace "https://vm.emmetts.dev" with your own url.
 - This is equivalent to the tailscale `--login-server` command line option.
 - Multiple parameters can be combined with commas: `#tail=<key>,tailUrl=<url>`
 
@@ -265,11 +267,11 @@ To access Claude AI, you need an API key. Follow these steps to get started:
 **Option B: Pre-configure via URL**
 - Add the `claude` parameter to the URL fragment to auto-configure your API key:
 
-`https://webvm.io/#claude=<your-api-key>`
+`https://vm.emmetts.dev/#claude=<your-api-key>`
 
 - You can combine this with Tailscale parameters using commas:
 
-`https://webvm.io/#claude=<your-api-key>,tail=<your-tailscale-key>`
+`https://vm.emmetts.dev/#claude=<your-api-key>,tail=<your-tailscale-key>`
 
 > **Security Note:** API keys in URLs are visible in browser history. This option is intended for personal/private deployments where you control access.
 
