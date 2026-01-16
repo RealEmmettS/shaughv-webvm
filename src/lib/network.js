@@ -1,13 +1,30 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment'
 
+// Parse comma-separated key=value pairs from URL fragment
+// Example: #claude=sk-ant-xxx,tail=tskey-xxx,tailUrl=https://...
+export function parseFragmentParams() {
+	if (!browser) return {};
+	const hash = window.location.hash.substr(1);
+	if (!hash) return {};
+
+	const params = {};
+	hash.split(',').forEach(pair => {
+		const [key, ...valueParts] = pair.split('=');
+		if (key && valueParts.length > 0) {
+			params[key.trim()] = valueParts.join('=').trim(); // rejoin in case value contains =
+		}
+	});
+	return params;
+}
+
 let authKey = undefined;
 let controlUrl = undefined;
 if(browser)
 {
-	let params = new URLSearchParams("?"+window.location.hash.substr(1));
-	authKey = params.get("authKey") || undefined;
-	controlUrl = params.get("controlUrl") || undefined;
+	const fragmentParams = parseFragmentParams();
+	authKey = fragmentParams.tail || undefined;
+	controlUrl = fragmentParams.tailUrl || undefined;
 }
 let dashboardUrl = controlUrl ? null : "https://login.tailscale.com/admin/machines";
 let resolveLogin = null;

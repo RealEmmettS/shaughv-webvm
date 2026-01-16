@@ -22,3 +22,8 @@
 </PanelButton>
 <p>WebVM can connect to the Internet via Tailscale</p>
 <p>Using Tailscale is required since browser do not support TCP/UDP sockets (yet!)</p>
+<p class="text-sm text-gray-400 mt-2">
+	<strong>URL Parameters:</strong> Pre-configure with <code class="bg-neutral-700 px-1 rounded">#tail=&lt;authkey&gt;</code>
+	or use a custom control server with <code class="bg-neutral-700 px-1 rounded">#tailUrl=&lt;url&gt;</code>.
+	Bookmark the URL to auto-load your config next time.
+</p>

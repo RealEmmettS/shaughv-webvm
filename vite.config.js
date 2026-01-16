@@ -1,12 +1,26 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
 	resolve: {
 		alias: {
-			'/config_terminal': process.env.WEBVM_MODE == "github" ? 'config_github_terminal.js' : 'config_public_terminal.js',
+			'/config_terminal': path.resolve(__dirname, process.env.WEBVM_MODE == "github" ? 'config_github_terminal.js' : 'config_public_terminal.js'),
 			"@leaningtech/cheerpx": process.env.CX_URL ? process.env.CX_URL : "@leaningtech/cheerpx"
+		}
+	},
+	server: {
+		fs: {
+			allow: [__dirname]
+		}
+	},
+	optimizeDeps: {
+		esbuildOptions: {
+			target: 'es2022'
 		}
 	},
 	build: {

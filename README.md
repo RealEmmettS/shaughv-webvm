@@ -15,6 +15,8 @@ WebVM is powered by the CheerpX virtualization engine, and enables safe, sandbox
 
 ## Table of Contents
 
+- [Enable networking](#enable-networking)
+- [URL Parameters](#url-parameters)
 - [Fork, deploy, customize](#fork-deploy-customize)
 - [Running WebVM locally with a custom Debian mini disk image](#run-webvm-locally-with-a-custom-debian-mini-disk-image)
 - [Example customization: Python3 REPL](#example-customization-python3-repl)
@@ -53,11 +55,29 @@ Once that is set up:
 > [!TIP]
 > You can also check your connection status by checking the dot colour on the "connect to tailscale" button (which should now show your tailscale IP). On local network connectivity it will be orange, global will be green.
 
+## URL Parameters
+
+WebVM supports pre-configuration via URL fragment parameters. Multiple parameters can be combined using commas.
+
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `claude` | Claude/Anthropic API key for AI integration | `#claude=sk-ant-api03-xxxxx` |
+| `tail` | Tailscale auth key for networking | `#tail=tskey-auth-xxxxx` |
+| `tailUrl` | Custom Tailscale control server URL (for Headscale) | `#tailUrl=https://headscale.example.com` |
+
+**Example URLs:**
+- Claude AI only: `https://webvm.io/#claude=sk-ant-api03-xxxxx`
+- Tailscale only: `https://webvm.io/#tail=tskey-auth-xxxxx`
+- Both combined: `https://webvm.io/#claude=sk-ant-api03-xxxxx,tail=tskey-auth-xxxxx`
+- With custom control server: `https://webvm.io/#tail=tskey-xxxxx,tailUrl=https://headscale.example.com`
+
+> **Security Note:** API keys in URLs are visible in browser history and potentially server logs. URL parameters are intended for personal/private deployments where you control access.
+
 ## Using an authkey
 
-As an alternative to manually logging in, you can add your tailscale auth Key at the end of the webvm URL.
+As an alternative to manually logging in, you can add your Tailscale auth key at the end of the WebVM URL using the `tail` parameter:
 
-`https://webvm.io/#authKey=<your-key>`
+`https://webvm.io/#tail=<your-key>`
 
 It is recommended to use an ephemeral key.
 
@@ -65,7 +85,7 @@ It is recommended to use an ephemeral key.
 
 We also support [headscale](https://headscale.net/stable/), a selfhosted open source implementation of the Tailscale control server.
 
-Though as headscale unfortunately doesn't support adding CORS headers. You will have to set up a proxy server to add them. Headscales instructions on doing so can be found [here](https://headscale.net/stable/ref/integration/reverse-proxy/#nginx). 
+Though as headscale unfortunately doesn't support adding CORS headers. You will have to set up a proxy server to add them. Headscales instructions on doing so can be found [here](https://headscale.net/stable/ref/integration/reverse-proxy/#nginx).
 
 Once ready, add the following line to your `location /` block in your nginx config file.
 
@@ -77,13 +97,15 @@ Once ready, add the following line to your `location /` block in your nginx conf
 ```
 
 
-To log in to your headscale network add `#controlUrl=<your-control-url>` to the webVM url.
+To log in to your headscale network add `tailUrl=<your-control-url>` to the WebVM URL fragment:
+
+`https://webvm.io/#tailUrl=<your-control-url>`
 
 **Notes:**
 
 - If self hosting, replace "https://webvm.io" with your own url.
-- This is equivelant to the tailscale  `--login-server` command line option.
-- If used with authkey, don't forget to seperate the URL fragments with a `&` inbetween.
+- This is equivalent to the tailscale `--login-server` command line option.
+- Multiple parameters can be combined with commas: `#tail=<key>,tailUrl=<url>`
 
 
 # Fork, deploy, customize
@@ -221,7 +243,7 @@ index 2878332..1f3103a 100644
 To access Claude AI, you need an API key. Follow these steps to get started:
 
 ### 1. Create an account
-- Visit [Anthropic Console](https://console.anthropic.com/login) and sign up with your e-mail. You'll receive a sign in link to the Anthropic Console. 
+- Visit [Anthropic Console](https://console.anthropic.com/login) and sign up with your e-mail. You'll receive a sign in link to the Anthropic Console.
 
 <img src="/assets/anthropic_signup.png" width="90%">
 
@@ -232,11 +254,24 @@ To access Claude AI, you need an API key. Follow these steps to get started:
 <img src="/assets/anthropic_api_payment.png" width="90%">
 
 ### 3. Log in with your API key
+
+**Option A: Enter via the UI**
 - Navigate to your WebVM and hover over the robot icon. This will show the Claude AI Integration tab. For added convenience, you can click the pin button in the top right corner to keep the tab in place.
 - You'll see a prompt where you can insert your Claude API key.
 - Insert your key and press enter.
 
 <img src="/assets/insert_key.png" width="90%">
+
+**Option B: Pre-configure via URL**
+- Add the `claude` parameter to the URL fragment to auto-configure your API key:
+
+`https://webvm.io/#claude=<your-api-key>`
+
+- You can combine this with Tailscale parameters using commas:
+
+`https://webvm.io/#claude=<your-api-key>,tail=<your-tailscale-key>`
+
+> **Security Note:** API keys in URLs are visible in browser history. This option is intended for personal/private deployments where you control access.
 
 ### 4. Start using Claude AI
 - Once your API key is entered, you can begin interacting with Claude AI by asking questions such as:
@@ -245,7 +280,7 @@ To access Claude AI, you need an API key. Follow these steps to get started:
 
 <img src="/assets/webvm_claude_ctf.gif" alt="deploy_instructions_gif" width="90%">
 
-**Important:** Your API key is private and should never be shared. We do not have access to your key, which is not only stored locally in your browser.
+**Important:** Your API key is private and should never be shared. We do not have access to your key, which is stored locally in your browser.
 
 # Bugs and Issues
 

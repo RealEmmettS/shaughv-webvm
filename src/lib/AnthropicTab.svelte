@@ -79,6 +79,10 @@
 <h1 class="text-lg font-bold">Claude AI Integration</h1>
 <p>WebVM is integrated with Claude by Anthropic AI. You can prompt the AI to control the system.</p>
 <p>You need to provide your API key. The key is only saved locally to your browser.</p>
+<p class="text-sm text-gray-400 mt-2">
+	<strong>Tip:</strong> Pre-configure via URL with <code class="bg-neutral-700 px-1 rounded">#claude=&lt;your-api-key&gt;</code>.
+	Bookmark the URL to auto-load your key next time.
+</p>
 <div class="flex grow flex-col overflow-y-hidden gap-2">
 	<p class="flex flex-row gap-2">
 		<span class="mr-auto flex items-center">Conversation history</span>

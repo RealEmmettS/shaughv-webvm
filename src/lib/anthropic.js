@@ -2,6 +2,7 @@ import { get, writable } from 'svelte/store';
 import { browser } from '$app/environment'
 import { aiActivity } from '$lib/activities.js'
 import { tryPlausible } from '$lib/plausible.js';
+import { parseFragmentParams } from '$lib/network.js';
 
 import Anthropic from '@anthropic-ai/sdk';
 
@@ -492,6 +493,14 @@ export async function handleToolImpl(tool, term)
 
 function initialize()
 {
+	// Check URL fragment for claude= parameter first
+	const fragmentParams = parseFragmentParams();
+	if(fragmentParams.claude)
+	{
+		setApiKey(fragmentParams.claude);
+		return;
+	}
+	// Fall back to localStorage
 	var savedApiKey = localStorage.getItem("anthropic-api-key");
 	if(savedApiKey)
 		setApiKey(savedApiKey);
