@@ -7,7 +7,6 @@
 	import DiskTab from './DiskTab.svelte';
 	import AnthropicTab from './AnthropicTab.svelte';
 	import PostsTab from './PostsTab.svelte';
-	import DiscordTab from './DiscordTab.svelte';
 	import GitHubTab from './GitHubTab.svelte';
 	import SmallButton from './SmallButton.svelte';
 	import { cpuActivity, diskActivity, aiActivity } from './activities.js';
@@ -19,7 +18,6 @@
 		{ icon: 'fas fa-robot', info: 'ClaudeAI', activity: aiActivity },
 		null,
 		{ icon: 'fas fa-book-open', info: 'Posts', activity: null },
-		{ icon: 'fab fa-discord', info: 'Discord', activity: null },
 		{ icon: 'fab fa-github', info: 'GitHub', activity: null },
 	];
 	let dispatch = createEventDispatcher();
@@ -111,8 +109,6 @@
 			<AnthropicTab handleTool={handleTool} />
 		{:else if activeInfo === 'Posts'}
 			<PostsTab/>
-		{:else if activeInfo === 'Discord'}
-			<DiscordTab/>
 		{:else if activeInfo === 'GitHub'}
 			<GitHubTab/>
 		{:else}
@@ -128,7 +124,7 @@
 			</div>
 			<hr class="border-t border-solid border-gray-300">
 			<div class="pt-1 pb-1">
-				<a href="https://leaningtech.com/" target="”_blank”">© 2022-2025 Leaning Technologies</a>
+				<a href="https://emmettshaughnessy.com/" target="_blank">© 2026 Emmett Shaughnessy.</a>
 			</div>
 		</div>
 	</div>

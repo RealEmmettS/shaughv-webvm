@@ -12,19 +12,17 @@ export const introMessage = [
   "| CheerpX includes an x86-to-WebAssembly JIT compiler, a virtual block-based  |",
   "| file system, and a Linux syscall emulator.                                  |",
   "|                                                                             |",
-  "| Try out the new Alpine / Xorg / i3 WebVM: " +
+  "| Try out the Alpine / Xorg / i3 WebVM: " +
     underline +
-    "https://webvm.io/alpine.html" +
+    "https://vm.emmetts.dev/alpine" +
     normal +
-    "      |",
+    "          |",
   "|                                                                             |",
-  "| [News] BrowserPod (Beta): WebAssembly sandboxes for Node, Python, Rails:    |",
-  "|                                                                             |",
-  "| " +
+  "| Fork maintained by shaughv: " +
     underline +
-    "https://labs.leaningtech.com/blog/browserpod-beta-announcement" +
+    "https://shaughv.com" +
     normal +
-    "              |",
+    "                            |",
   "|                                                                             |",
   "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
   "",
