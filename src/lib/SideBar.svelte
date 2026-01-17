@@ -11,14 +11,14 @@
 	import SmallButton from './SmallButton.svelte';
 	import { cpuActivity, diskActivity, aiActivity } from './activities.js';
 	const icons = [
-		{ icon: 'fas fa-info-circle', info: 'Information', activity: null },
-		{ icon: 'fas fa-wifi', info: 'Networking', activity: null },
-		{ icon: 'fas fa-microchip', info: 'CPU', activity: cpuActivity },
-		{ icon: 'fas fa-compact-disc', info: 'Disk', activity: diskActivity },
-		{ icon: 'fas fa-robot', info: 'ClaudeAI', activity: aiActivity },
+		{ icon: '/icons/info.svg', info: 'Information', activity: null },
+		{ icon: '/icons/wifi.svg', info: 'Networking', activity: null },
+		{ icon: '/icons/cpu.svg', info: 'CPU', activity: cpuActivity },
+		{ icon: '/icons/disk.svg', info: 'Disk', activity: diskActivity },
+		{ icon: '/icons/robot.svg', info: 'ClaudeAI', activity: aiActivity },
 		null,
-		{ icon: 'fas fa-book-open', info: 'Posts', activity: null },
-		{ icon: 'fab fa-github', info: 'GitHub', activity: null },
+		{ icon: '/icons/book.svg', info: 'Posts', activity: null },
+		{ icon: 'fab fa-github', info: 'GitHub', activity: null, isFA: true },
 	];
 	let dispatch = createEventDispatcher();
 	let activeInfo = null; // Tracks currently visible info.
@@ -73,6 +73,7 @@
 					icon={i.icon}
 					info={i.info}
 					activity={i.activity}
+					isFA={i.isFA || false}
 					on:mouseover={(e) => showInfo(e.detail)}
 					on:click={() => handleClick(i)}
 				/>
@@ -89,7 +90,7 @@
 	>
 		<div class="absolute right-2 top-2">
 			<SmallButton
-				buttonIcon="fa-solid fa-thumbtack"
+				buttonIcon="/icons/pin.svg"
 				clickHandler={toggleSidebarPin}
 				buttonTooltip={sideBarPinned ? "Unpin Sidebar" : "Pin Sidebar"}
 				bgColor={sideBarPinned ? "bg-neutral-500" : "bg-neutral-700"}
