@@ -98,7 +98,7 @@ jobs:
 
     env:
       TAG: "ext2-webvm-base-image" # Tag of docker image.
-      IMAGE_SIZE: '${{ github.event.inputs.IMAGE_SIZE || '750M' }}'
+      IMAGE_SIZE: "${{ github.event.inputs.IMAGE_SIZE || '750M' }}"
       DEPLOY_DIR: /webvm_deploy/ # Path to directory where we host the final image from.
 
     permissions: # Permissions to grant the GITHUB_TOKEN.
