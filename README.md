@@ -1,7 +1,6 @@
 # WebVM
 
-[![Discord server](https://img.shields.io/discord/988743885121548329?color=%235865F2&logo=discord&logoColor=%23fff)](https://discord.gg/yWRr2YnD9c)
-[![Issues](https://img.shields.io/github/issues/leaningtech/webvm)](https://github.com/leaningtech/webvm/issues)
+[![Issues](https://img.shields.io/github/issues/RealEmmettS/shaughv-webvm)](https://github.com/RealEmmettS/shaughv-webvm/issues)
 
 This repository hosts the source code for [https://shaughvm.com](https://shaughvm.com), a Linux virtual machine that runs in your browser.
 
@@ -286,8 +285,7 @@ To access Claude AI, you need an API key. Follow these steps to get started:
 
 # Bugs and Issues
 
-Please use [Issues](https://github.com/leaningtech/webvm/issues) to report any bug.
-Or come to say hello / share your feedback on [Discord](https://discord.gg/yTNZgySKGa).
+Please use [Issues](https://github.com/RealEmmettS/shaughv-webvm/issues) to report any bug.
 
 # More links
 
