@@ -2,29 +2,29 @@ const color = "\x1b[1;35m";
 const underline = "\x1b[94;4m";
 const normal = "\x1b[0m";
 export const introMessage = [
-  "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-  "|                                                                             |",
-  "| ShaughVM is a virtual Linux environment running in the browser via WebAssembly.|",
-  "|                                                                             |",
-  "| ShaughVM is powered by the CheerpX virtualization engine, which enables safe,  |",
-  "| sandboxed execution of x86 binaries, fully client-side.                     |",
-  "|                                                                             |",
-  "| CheerpX includes an x86-to-WebAssembly JIT compiler, a virtual block-based  |",
-  "| file system, and a Linux syscall emulator.                                  |",
-  "|                                                                             |",
+  "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+  "|                                                                                  |",
+  "| ShaughVM is a virtual Linux environment running in the browser via WebAssembly.  |",
+  "|                                                                                  |",
+  "| ShaughVM is powered by the CheerpX virtualization engine, which enables safe,    |",
+  "| sandboxed execution of x86 binaries, fully client-side.                          |",
+  "|                                                                                  |",
+  "| CheerpX includes an x86-to-WebAssembly JIT compiler, a virtual block-based       |",
+  "| file system, and a Linux syscall emulator.                                       |",
+  "|                                                                                  |",
   "| Try out the Alpine / Xorg / i3 ShaughVM: " +
     underline +
     "https://shaughvm.com/alpine" +
     normal +
-    "            |",
-  "|                                                                             |",
+    "             |",
+  "|                                                                                  |",
   "| Fork maintained by shaughv: " +
     underline +
     "https://shaughv.com" +
     normal +
-    "                            |",
-  "|                                                                             |",
-  "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+    "                                  |",
+  "|                                                                                  |",
+  "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
   "",
   "   Welcome to ShaughVM. If unsure, try these examples:",
   "",
