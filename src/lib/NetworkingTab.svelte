@@ -20,7 +20,7 @@
 		<i class='fas fa-circle fa-xs ml-auto {$exitNode ? 'text-green-500' : 'text-amber-500'}' title={$exitNode ? 'Ready' : 'No exit node'}></i>
 	{/if}
 </PanelButton>
-<p>WebVM can connect to the Internet via Tailscale</p>
+<p>ShaughVM can connect to the Internet via Tailscale</p>
 <p>Using Tailscale is required since browser do not support TCP/UDP sockets (yet!)</p>
 <p class="text-sm text-gray-400 mt-2">
 	<strong>URL Parameters:</strong> Pre-configure with <code class="bg-neutral-700 px-1 rounded">#tail=&lt;authkey&gt;</code>

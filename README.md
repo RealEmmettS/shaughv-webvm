@@ -3,9 +3,9 @@
 [![Discord server](https://img.shields.io/discord/988743885121548329?color=%235865F2&logo=discord&logoColor=%23fff)](https://discord.gg/yWRr2YnD9c)
 [![Issues](https://img.shields.io/github/issues/leaningtech/webvm)](https://github.com/leaningtech/webvm/issues)
 
-This repository hosts the source code for [https://vm.emmetts.dev](https://vm.emmetts.dev), a Linux virtual machine that runs in your browser.
+This repository hosts the source code for [https://shaughvm.com](https://shaughvm.com), a Linux virtual machine that runs in your browser.
 
-Try out the new Alpine / Xorg / i3 graphical environment: [https://vm.emmetts.dev/alpine.html](https://vm.emmetts.dev/alpine.html)
+Try out the new Alpine / Xorg / i3 graphical environment: [https://shaughvm.com/alpine.html](https://shaughvm.com/alpine.html)
 
 > **Note:** A custom Alpine image for this fork is coming soon. For now, the Alpine link points to the upstream deployment.
 
@@ -68,10 +68,10 @@ WebVM supports pre-configuration via URL fragment parameters. Multiple parameter
 | `tailUrl` | Custom Tailscale control server URL (for Headscale) | `#tailUrl=https://headscale.example.com` |
 
 **Example URLs:**
-- Claude AI only: `https://vm.emmetts.dev/#claude=sk-ant-api03-xxxxx`
-- Tailscale only: `https://vm.emmetts.dev/#tail=tskey-auth-xxxxx`
-- Both combined: `https://vm.emmetts.dev/#claude=sk-ant-api03-xxxxx,tail=tskey-auth-xxxxx`
-- With custom control server: `https://vm.emmetts.dev/#tail=tskey-xxxxx,tailUrl=https://headscale.example.com`
+- Claude AI only: `https://shaughvm.com/#claude=sk-ant-api03-xxxxx`
+- Tailscale only: `https://shaughvm.com/#tail=tskey-auth-xxxxx`
+- Both combined: `https://shaughvm.com/#claude=sk-ant-api03-xxxxx,tail=tskey-auth-xxxxx`
+- With custom control server: `https://shaughvm.com/#tail=tskey-xxxxx,tailUrl=https://headscale.example.com`
 
 > **Security Note:** API keys in URLs are visible in browser history and potentially server logs. URL parameters are intended for personal/private deployments where you control access.
 
@@ -79,7 +79,7 @@ WebVM supports pre-configuration via URL fragment parameters. Multiple parameter
 
 As an alternative to manually logging in, you can add your Tailscale auth key at the end of the WebVM URL using the `tail` parameter:
 
-`https://vm.emmetts.dev/#tail=<your-key>`
+`https://shaughvm.com/#tail=<your-key>`
 
 It is recommended to use an ephemeral key.
 
@@ -92,7 +92,7 @@ Though as headscale unfortunately doesn't support adding CORS headers. You will 
 Once ready, add the following line to your `location /` block in your nginx config file.
 
 ``` Nginx
- if ($http_origin = "https://vm.emmetts.dev") {
+ if ($http_origin = "https://shaughvm.com") {
             add_header 'Access-Control-Allow-Origin' "$http_origin";
 			add_header 'Access-Control-Allow-Credentials' 'true' always;
         }
@@ -101,11 +101,11 @@ Once ready, add the following line to your `location /` block in your nginx conf
 
 To log in to your headscale network add `tailUrl=<your-control-url>` to the WebVM URL fragment:
 
-`https://vm.emmetts.dev/#tailUrl=<your-control-url>`
+`https://shaughvm.com/#tailUrl=<your-control-url>`
 
 **Notes:**
 
-- If self hosting, replace "https://vm.emmetts.dev" with your own url.
+- If self hosting, replace "https://shaughvm.com" with your own url.
 - This is equivalent to the tailscale `--login-server` command line option.
 - Multiple parameters can be combined with commas: `#tail=<key>,tailUrl=<url>`
 
@@ -267,11 +267,11 @@ To access Claude AI, you need an API key. Follow these steps to get started:
 **Option B: Pre-configure via URL**
 - Add the `claude` parameter to the URL fragment to auto-configure your API key:
 
-`https://vm.emmetts.dev/#claude=<your-api-key>`
+`https://shaughvm.com/#claude=<your-api-key>`
 
 - You can combine this with Tailscale parameters using commas:
 
-`https://vm.emmetts.dev/#claude=<your-api-key>,tail=<your-tailscale-key>`
+`https://shaughvm.com/#claude=<your-api-key>,tail=<your-tailscale-key>`
 
 > **Security Note:** API keys in URLs are visible in browser history. This option is intended for personal/private deployments where you control access.
 

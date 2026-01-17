@@ -4,19 +4,19 @@ const normal = "\x1b[0m";
 export const introMessage = [
   "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
   "|                                                                             |",
-  "| WebVM is a virtual Linux environment running in the browser via WebAssembly.|",
+  "| ShaughVM is a virtual Linux environment running in the browser via WebAssembly.|",
   "|                                                                             |",
-  "| WebVM is powered by the CheerpX virtualization engine, which enables safe,  |",
+  "| ShaughVM is powered by the CheerpX virtualization engine, which enables safe,  |",
   "| sandboxed execution of x86 binaries, fully client-side.                     |",
   "|                                                                             |",
   "| CheerpX includes an x86-to-WebAssembly JIT compiler, a virtual block-based  |",
   "| file system, and a Linux syscall emulator.                                  |",
   "|                                                                             |",
-  "| Try out the Alpine / Xorg / i3 WebVM: " +
+  "| Try out the Alpine / Xorg / i3 ShaughVM: " +
     underline +
-    "https://vm.emmetts.dev/alpine" +
+    "https://shaughvm.com/alpine" +
     normal +
-    "          |",
+    "            |",
   "|                                                                             |",
   "| Fork maintained by shaughv: " +
     underline +
@@ -26,7 +26,7 @@ export const introMessage = [
   "|                                                                             |",
   "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
   "",
-  "   Welcome to WebVM. If unsure, try these examples:",
+  "   Welcome to ShaughVM. If unsure, try these examples:",
   "",
   "     python3 examples/python3/fibonacci.py ",
   "     gcc -o helloworld examples/c/helloworld.c && ./helloworld",
@@ -48,7 +48,7 @@ export const errorMessage = [
   "",
 ];
 export const unexpectedErrorMessage = [
-  color + "WebVM encountered an unexpected error" + normal,
+  color + "ShaughVM encountered an unexpected error" + normal,
   "",
   "Check the DevTools console for further information",
   "",

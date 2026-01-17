@@ -68,7 +68,7 @@
 		messageListElement.classList.remove("p-1");
 		const link = document.createElement('a');
 		link.href = canvas.toDataURL('image/png');
-		link.download = 'WebVM_Claude.png';
+		link.download = 'ShaughVM_Claude.png';
 		link.click();
 	}
 
@@ -77,7 +77,7 @@
 	}
 </script>
 <h1 class="text-lg font-bold">Claude AI Integration</h1>
-<p>WebVM is integrated with Claude by Anthropic AI. You can prompt the AI to control the system.</p>
+<p>ShaughVM is integrated with Claude by Anthropic AI. You can prompt the AI to control the system.</p>
 <p>You need to provide your API key. The key is only saved locally to your browser.</p>
 <p class="text-sm text-gray-400 mt-2">
 	<strong>Tip:</strong> Pre-configure via URL with <code class="bg-neutral-700 px-1 rounded">#claude=&lt;your-api-key&gt;</code>.

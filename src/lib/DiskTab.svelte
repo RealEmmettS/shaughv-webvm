@@ -51,12 +51,12 @@
 <PanelButton buttonIcon="fa-solid fa-trash-can" clickHandler={handleReset} buttonText={getButtonText(state)} bgColor={getBgColor(state)} hoverColor={getHoverColor(state)}>
 </PanelButton>
 {#if state == "CONFIRM"}
-	<p><span class="font-bold">Warning: </span>WebVM will reload</p>
+	<p><span class="font-bold">Warning: </span>ShaughVM will reload</p>
 {:else if state == "RESETTING"}
 	<p><span class="font-bold">Reset in progress: </span>Please wait...</p>
 {:else}
 	<p><span class="font-bold">Backend latency: </span>{$diskLatency}ms</p>
 {/if}
-<p>WebVM runs on top of a complete Linux distribution</p>
+<p>ShaughVM runs on top of a complete Linux distribution</p>
 <p>Filesystems up to 2GB are supported and data is downloaded completely on-demand</p>
-<p>The WebVM cloud backend uses WebSockets and it's distributed via a global CDN to minimize download latency</p>
+<p>The ShaughVM cloud backend uses WebSockets and it's distributed via a global CDN to minimize download latency</p>
