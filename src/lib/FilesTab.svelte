@@ -1,6 +1,6 @@
 <script>
+	import { onMount } from 'svelte';
 	import { uploadedFiles, filesActivity, UPLOAD_DIR } from './filesState.js';
-	import PanelButton from './PanelButton.svelte';
 	import SmallButton from './SmallButton.svelte';
 
 	export let handleTool;
@@ -11,8 +11,14 @@
 	let previewFileName = null;
 	let renameFile = null;
 	let renameValue = '';
-	let ffmpegInstalling = false;
-	let ffmpegInstalled = false;
+	let ffmpegAvailable = null; // null = checking, true/false = result
+
+	onMount(async () => {
+		if (handleTool) {
+			const result = await handleTool({ command: 'which ffmpeg' });
+			ffmpegAvailable = result && result.includes('/ffmpeg');
+		}
+	});
 
 	// Sanitize filename for bash safety
 	function sanitizeFilename(name) {
@@ -265,25 +271,6 @@
 		}
 	}
 
-	async function installFFmpeg() {
-		if (!handleTool || ffmpegInstalling) return;
-
-		ffmpegInstalling = true;
-		filesActivity.set(true);
-		try {
-			await handleTool({ command: 'sudo apt-get update && sudo apt-get install -y ffmpeg' });
-			// Verify installation
-			const result = await handleTool({ command: 'which ffmpeg' });
-			if (result && result.includes('/ffmpeg')) {
-				ffmpegInstalled = true;
-			}
-		} catch (error) {
-			console.error('FFmpeg install error:', error);
-		} finally {
-			ffmpegInstalling = false;
-			filesActivity.set(false);
-		}
-	}
 </script>
 
 <h1 class="text-lg font-bold">Files</h1>
@@ -365,15 +352,14 @@
 	</div>
 {/if}
 
-<!-- FFmpeg install section -->
+<!-- FFmpeg status section -->
 <div class="mt-4 pt-3 border-t border-neutral-500">
 	<p class="text-sm text-gray-300 mb-2">Media tools:</p>
-	{#if ffmpegInstalled}
-		<PanelButton buttonIcon="fa-solid fa-check" buttonText="FFmpeg installed" bgColor="bg-green-800" />
-	{:else if ffmpegInstalling}
-		<PanelButton buttonIcon="fa-solid fa-spinner fa-spin" buttonText="Installing FFmpeg..." />
+	{#if ffmpegAvailable === null}
+		<p class="text-sm text-gray-400"><i class="fas fa-spinner fa-spin mr-1"></i>Checking FFmpeg...</p>
+	{:else if ffmpegAvailable}
+		<p class="text-sm text-green-400"><i class="fas fa-check mr-1"></i>FFmpeg available</p>
 	{:else}
-		<PanelButton buttonIcon="fa-solid fa-film" clickHandler={installFFmpeg} buttonText="Install FFmpeg" />
+		<p class="text-sm text-gray-400"><i class="fas fa-times mr-1"></i>FFmpeg not installed</p>
 	{/if}
-	<p class="text-xs text-gray-400 mt-1">Adds video/audio conversion support (~100MB)</p>
 </div>
