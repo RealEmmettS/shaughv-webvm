@@ -8,14 +8,17 @@
 	import AnthropicTab from './AnthropicTab.svelte';
 	import PostsTab from './PostsTab.svelte';
 	import GitHubTab from './GitHubTab.svelte';
+	import FilesTab from './FilesTab.svelte';
 	import SmallButton from './SmallButton.svelte';
 	import { cpuActivity, diskActivity, aiActivity } from './activities.js';
+	import { filesActivity } from './filesState.js';
 	const icons = [
 		{ icon: '/icons/info.svg', info: 'Information', activity: null },
 		{ icon: '/icons/wifi.svg', info: 'Networking', activity: null },
 		{ icon: '/icons/cpu.svg', info: 'CPU', activity: cpuActivity },
 		{ icon: '/icons/disk.svg', info: 'Disk', activity: diskActivity },
 		{ icon: '/icons/robot.svg', info: 'ClaudeAI', activity: aiActivity },
+		{ icon: '/icons/upload.svg', info: 'Files', activity: filesActivity },
 		null,
 		{ icon: '/icons/book.svg', info: 'Posts', activity: null },
 		{ icon: 'fab fa-github', info: 'GitHub', activity: null, isFA: true },
@@ -108,6 +111,8 @@
 			<DiskTab on:reset/>
 		{:else if activeInfo === 'ClaudeAI'}
 			<AnthropicTab handleTool={handleTool} />
+		{:else if activeInfo === 'Files'}
+			<FilesTab handleTool={handleTool} />
 		{:else if activeInfo === 'Posts'}
 			<PostsTab/>
 		{:else if activeInfo === 'GitHub'}
